@@ -10,7 +10,10 @@ namespace Com.MaximilienGalea.Juiciness.Juiciness {
     public class Player : MonoBehaviour {
         [SerializeField] private LayerMask groundMask;
         [Space]
-        [SerializeField] private float speed;
+        [SerializeField] private float maxSpeed;
+        [SerializeField] private float acceleration;
+        [SerializeField] private float friction;
+        [Space]
         [SerializeField] private float jumpForce;
         [SerializeField] private float jumpDuration;
         [SerializeField] private float fallForce;
@@ -19,33 +22,33 @@ namespace Com.MaximilienGalea.Juiciness.Juiciness {
         private float elapsedTimeJump;
         private bool isGrounded;
 
-        private PlayerController controller;
+        private Vector3 acc = new Vector3();
+        private Vector3 velocity = new Vector3();
+
+        private PlayerController inputController;
+
         private void Start() {
-            controller = GetComponent<PlayerController>();
+            inputController = GetComponent<PlayerController>();
         }
 
         private void FixedUpdate() {
-            isGrounded = Physics.Raycast(transform.position, Vector3.down, .7f, groundMask);
-
-            transform.position += controller.GetAxis() * speed * Time.deltaTime;
-
-            if (controller.Jump()) {
-                Jump();
-                elapsedTimeJump += Time.deltaTime;
-            } else if (!isGrounded) {
-                Fall();
-            }
-            
+            Move();
         }
 
-        private void Fall() {
-            transform.position += Vector3.down * fallForce * Time.deltaTime;
+        private void Move() {
+            acc += inputController.GetAxis() * acceleration * Time.deltaTime;
+            velocity += acc * Time.deltaTime;
+            var lFriction = Mathf.Pow(friction, Time.deltaTime);
+            velocity *= lFriction;
+
+            velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
+
+            transform.position += velocity * Time.deltaTime;
+
+            acc = Vector3.zero;
+
+
         }
 
-        private void Jump() {
-            isGrounded = false;
-            transform.position += jumpForce * Vector3.up * Time.deltaTime;
-            
-        }
     }
 }
