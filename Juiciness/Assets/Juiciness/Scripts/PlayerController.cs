@@ -12,11 +12,6 @@ namespace Com.MaximilienGalea.Juiciness.Juiciness {
         [SerializeField] private string verticalAxis;
         [SerializeField] private string jumpKey;
 
-
-        private void Update() {
-
-        }
-
         public Vector3 GetAxis() {
             float hori = Input.GetAxis(horizontalAxis);
             float vert = Input.GetAxis(verticalAxis);
@@ -25,7 +20,7 @@ namespace Com.MaximilienGalea.Juiciness.Juiciness {
         }
 
         public bool Jump() {
-            return Input.GetAxis(jumpKey) != 0; 
+            return Input.GetKeyDown(KeyCode.Space);
         }
     }
 }
