@@ -6,14 +6,15 @@
 using UnityEngine;
 
 namespace Com.MaximilienGalea.Juiciness.Juiciness.Level {
-	public class SpawnObject : MonoBehaviour {
+    public class SpawnObject : MonoBehaviour {
 
         [SerializeField] GameObject[] objects;
-	
-		private void Start () {
+
+        private void Start() {
             int rand = Random.Range(0, objects.Length);
-            Instantiate(objects[rand], transform.position, Quaternion.identity);
-		}
-		
-	}
+            GameObject instance = Instantiate(objects[rand], transform.position, Quaternion.identity);
+            instance.transform.parent = transform;
+        }
+
+    }
 }
