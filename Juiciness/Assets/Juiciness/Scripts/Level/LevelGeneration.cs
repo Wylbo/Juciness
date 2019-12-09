@@ -17,7 +17,7 @@ namespace Com.MaximilienGalea.Juiciness.Juiciness.Level {
 
         [SerializeField] private float minX, maxX, minY;
 
-        private bool stopGeneration = false;
+        [HideInInspector]public bool stopGeneration = false;
 
         private int direction;
         private int downCounter;
