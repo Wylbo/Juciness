@@ -2,8 +2,10 @@
 
 Projet de test pour train de la juciness
 
-## Procedural
-Génération de level spelunky like
+# Génération procédurale
 
-## Dungeon
-Génération de level Isaac like
+* ## Procedural
+  Génération de level spelunky like
+
+* ## Dungeon
+  Génération de level Isaac like
