@@ -10,22 +10,23 @@ namespace Com.MaximilienGalea.Juiciness.Juiciness.Level {
         [SerializeField] private LayerMask RoomMask;
         [SerializeField] private Transform[] startingPositions;
         [SerializeField] private float moveAmount;
-        private float timeBtwRoom;
         [SerializeField] private float startTimeBtwSpawn = 0.25f;
+        [SerializeField] private GameObject[] startRooms;
 
         public GameObject[] rooms; // 0 = LR, 1 = LRB, 2 = LRT, 3 = LRTB
 
         [SerializeField] private float minX, maxX, minY;
 
-        [HideInInspector]public bool stopGeneration = false;
+        [HideInInspector] public bool stopGeneration = false;
 
         private int direction;
         private int downCounter;
+        private float timeBtwRoom;
 
         private void Start() {
             int randStartPos = Random.Range(0, startingPositions.Length);
             transform.position = startingPositions[randStartPos].position;
-            Instantiate(rooms[0], transform.position, Quaternion.identity);
+            Instantiate(startRooms[0], transform.position, Quaternion.identity);
 
             direction = Random.Range(1, 6);
             timeBtwRoom = startTimeBtwSpawn;

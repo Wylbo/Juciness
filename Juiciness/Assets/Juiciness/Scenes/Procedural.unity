@@ -425,7 +425,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.8980393, g: 0.8352942, b: 0.7019608, a: 0}
+  m_BackGroundColor: {r: 0.8980393, g: 0.8352942, b: 0.7019608, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -441,8 +441,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 22
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -465,8 +465,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 601187481}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -152.1438}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -793,6 +793,8 @@ MonoBehaviour:
   - {fileID: 124550772}
   moveAmount: 10
   startTimeBtwSpawn: 0.25
+  startRooms:
+  - {fileID: 5498867090104371622, guid: eb6cb6a27d45b5c4d907e98937d0c95e, type: 3}
   rooms:
   - {fileID: 606754767824706450, guid: a8eb8c57049f4d941860ad2a5f8f3052, type: 3}
   - {fileID: 2255820696835769774, guid: 74955299a2b571943bbe358739c33285, type: 3}
